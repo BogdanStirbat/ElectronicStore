@@ -47,7 +47,6 @@ public class HibernateConfig {
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "none");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
-        hibernateProperties.setProperty("hibernate.id.new_generator_mappings", "true");
 
         return hibernateProperties;
     }
