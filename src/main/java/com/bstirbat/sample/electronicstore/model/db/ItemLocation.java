@@ -15,8 +15,7 @@ import javax.persistence.Table;
 public class ItemLocation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_location_generator")
-    @SequenceGenerator(name="item_location_generator", sequenceName = "items_location_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
