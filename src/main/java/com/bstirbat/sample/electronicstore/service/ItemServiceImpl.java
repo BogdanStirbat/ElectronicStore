@@ -16,15 +16,16 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item findById(long id) {
-        List<Item> items = entityManager.createQuery("select i from Item i where i.id=:id", Item.class)
-                .setParameter("id", id)
-                .getResultList();
-
-        if (items == null || items.isEmpty()) {
-            return null;
-        }
-
-        return items.get(0);
+        return entityManager.find(Item.class, id);
+//        List<Item> items = entityManager.createQuery("select i from Item i where i.id=:id", Item.class)
+//                .setParameter("id", id)
+//                .getResultList();
+//
+//        if (items == null || items.isEmpty()) {
+//            return null;
+//        }
+//
+//        return items.get(0);
     }
 
     @Override
