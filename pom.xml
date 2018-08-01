@@ -22,7 +22,7 @@
     <postgresql.version>42.2.4</postgresql.version>
     <jackson.version>2.9.6</jackson.version>
     <log4j.version>2.11.1</log4j.version>
-    <ehcache.version>3.5.2</ehcache.version>
+    <ignite.version>2.6.0</ignite.version>
   </properties>
 
   <dependencies>
@@ -63,9 +63,9 @@
       <version>${hibernate.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>${ehcache.version}</version>
+      <groupId>org.apache.ignite</groupId>
+      <artifactId>ignite-core</artifactId>
+      <version>${ignite.version}</version>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
