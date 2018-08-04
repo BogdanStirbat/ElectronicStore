@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/review")
 public class ReviewController {
@@ -87,5 +89,12 @@ public class ReviewController {
 
         Review updatedReview = reviewService.update(review);
         return ResponseEntity.ok(updatedReview);
+    }
+
+    @GetMapping(value = "/all/item/{itemId}")
+    public ResponseEntity getAllByItem(@PathVariable Long itemId) {
+
+        List<Review> reviewsByItem = reviewService.findByItem(itemId);
+        return ResponseEntity.ok(reviewsByItem);
     }
 }

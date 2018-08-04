@@ -4,6 +4,7 @@ import com.bstirbat.sample.electronicstore.model.db.Review;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class ReviewServiceImpl implements ReviewService {
 
@@ -30,5 +31,13 @@ public class ReviewServiceImpl implements ReviewService {
     @Transactional
     public Review update(Review review) {
         return entityManager.merge(review);
+    }
+
+    @Override
+    public List<Review> findByItem(long itemId) {
+        return entityManager.createQuery("select r from Review r where r.item.id=:itemId", Review.class)
+                .setParameter("itemId", itemId)
+                .setHint("org.hibernate.cacheable", true)
+                .getResultList();
     }
 }
