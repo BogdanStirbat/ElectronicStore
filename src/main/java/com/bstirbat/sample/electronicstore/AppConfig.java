@@ -2,6 +2,8 @@ package com.bstirbat.sample.electronicstore;
 
 import com.bstirbat.sample.electronicstore.service.ItemService;
 import com.bstirbat.sample.electronicstore.service.ItemServiceImpl;
+import com.bstirbat.sample.electronicstore.service.ReviewService;
+import com.bstirbat.sample.electronicstore.service.ReviewServiceImpl;
 import com.bstirbat.sample.electronicstore.service.StoreService;
 import com.bstirbat.sample.electronicstore.service.StoreServiceImpl;
 import org.springframework.context.annotation.Bean;
@@ -24,5 +26,10 @@ public class AppConfig {
     @Bean
     public ItemService itemService() {
         return new ItemServiceImpl(entityManager);
+    }
+
+    @Bean
+    public ReviewService reviewService() {
+        return new ReviewServiceImpl(entityManager);
     }
 }
