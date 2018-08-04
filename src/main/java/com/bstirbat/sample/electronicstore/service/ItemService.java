@@ -7,4 +7,6 @@ public interface ItemService {
     Item findById(long id);
 
     Item save(Item item);
+
+    Item update(Item item);
 }
