@@ -29,7 +29,7 @@ public class Main {
                     try {
                         port = Integer.parseInt(valuePart);
                     } catch (Exception e) {
-                        logger.warn("Could not parse given port value {}, using {}");
+                        logger.warn("Could not parse given port value {}, using {}", namePart, port);
                     }
                 }
             }
