@@ -3,6 +3,7 @@ package com.bstirbat.sample.electronicstore.controller;
 import com.bstirbat.sample.electronicstore.model.db.Item;
 import com.bstirbat.sample.electronicstore.model.db.Review;
 import com.bstirbat.sample.electronicstore.model.web.ReviewModel;
+import com.bstirbat.sample.electronicstore.model.web.UpdateCommentReviewByRatingModel;
 import com.bstirbat.sample.electronicstore.service.ItemService;
 import com.bstirbat.sample.electronicstore.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,5 +97,29 @@ public class ReviewController {
 
         List<Review> reviewsByItem = reviewService.findByItem(itemId);
         return ResponseEntity.ok(reviewsByItem);
+    }
+
+    @PutMapping(value = "/update/commentsbyrating")
+    public ResponseEntity updateCommentsByRating(@RequestBody UpdateCommentReviewByRatingModel updateCommentReviewByRatingModel) {
+
+        if (updateCommentReviewByRatingModel.getNumberOfStars() == null) {
+            return ResponseEntity.badRequest().body("No stars given.");
+        }
+
+        reviewService.updateComments(updateCommentReviewByRatingModel.getNumberOfStars(), updateCommentReviewByRatingModel.getComment());
+
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping(value = "/update/commentsbyrating/native")
+    public ResponseEntity updateCommentsByRatingNative(@RequestBody UpdateCommentReviewByRatingModel updateCommentReviewByRatingModel) {
+
+        if (updateCommentReviewByRatingModel.getNumberOfStars() == null) {
+            return ResponseEntity.badRequest().body("No stars given.");
+        }
+
+        reviewService.updateCommentsNativeQuery(updateCommentReviewByRatingModel.getNumberOfStars(), updateCommentReviewByRatingModel.getComment());
+
+        return ResponseEntity.ok().build();
     }
 }

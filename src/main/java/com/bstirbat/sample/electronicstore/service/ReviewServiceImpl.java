@@ -40,4 +40,22 @@ public class ReviewServiceImpl implements ReviewService {
                 .setHint("org.hibernate.cacheable", true)
                 .getResultList();
     }
+
+    @Override
+    @Transactional
+    public void updateComments(int numberOfStars, String comment) {
+        entityManager.createQuery("update Review set comment=:comment where numberOfStars=:numberOfStars")
+                .setParameter("comment", comment)
+                .setParameter("numberOfStars", numberOfStars)
+                .executeUpdate();
+    }
+
+    @Override
+    @Transactional
+    public void updateCommentsNativeQuery(int numberOfStars, String comment) {
+        entityManager.createNativeQuery("update reviews set comment=:comment where nr_stars=:numberOfStars")
+                .setParameter("comment", comment)
+                .setParameter("numberOfStars", numberOfStars)
+                .executeUpdate();
+    }
 }

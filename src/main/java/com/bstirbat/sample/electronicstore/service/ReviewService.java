@@ -13,4 +13,8 @@ public interface ReviewService {
     Review update(Review review);
 
     List<Review> findByItem(long itemId);
+
+    void updateComments(int numberOfStars, String comment);
+
+    void updateCommentsNativeQuery(int numberOfStars, String comment);
 }
