@@ -16,21 +16,14 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public Store findById(long id) {
-        List<Store> stores = entityManager.createQuery("select s from Store s where s.id=:id", Store.class)
-                .setParameter("id", id)
-                .getResultList();
-
-        if (stores == null || stores.isEmpty()) {
-            return null;
-        }
-
-        return stores.get(0);
+        return entityManager.find(Store.class, id);
     }
 
     @Override
     public List<Store> findByCity(String city) {
         return entityManager.createQuery("select s from Store s where s.city=:city", Store.class)
                 .setParameter("city", city)
+                .setHint("org.hibernate.cacheable", true)
                 .getResultList();
     }
 
@@ -38,7 +31,12 @@ public class StoreServiceImpl implements StoreService {
     @Transactional
     public Store save(Store store) {
         entityManager.persist(store);
-        entityManager.flush();
         return store;
+    }
+
+    @Override
+    @Transactional
+    public Store update(Store store) {
+        return entityManager.merge(store);
     }
 }

@@ -12,4 +12,6 @@ public interface StoreService {
     List<Store> findByCity(String city);
 
     Store save(Store store);
+
+    Store update(Store store);
 }
