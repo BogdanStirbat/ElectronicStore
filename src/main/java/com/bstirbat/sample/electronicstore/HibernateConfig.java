@@ -50,6 +50,8 @@ public class HibernateConfig {
         hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "true");
         hibernateProperties.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.jcache.JCacheRegionFactory");
         hibernateProperties.setProperty("hibernate.javax.cache.provider", "org.apache.ignite.cache.CachingProvider");
+        hibernateProperties.setProperty("hibernate.javax.cache.uri",
+                "file:///home/bogdan/side_projects/blog/apache_ignite_as_hibernate_l2_cache/ElectronicStore/src/main/resources/default-config.xml");
 
         return hibernateProperties;
     }
