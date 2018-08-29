@@ -23,4 +23,12 @@ public class UpdateCommentReviewByRatingModel {
     public void setNumberOfStars(Integer numberOfStars) {
         this.numberOfStars = numberOfStars;
     }
+
+    @Override
+    public String toString() {
+        return "UpdateCommentReviewByRatingModel{" +
+                "comment='" + comment + '\'' +
+                ", numberOfStars=" + numberOfStars +
+                '}';
+    }
 }

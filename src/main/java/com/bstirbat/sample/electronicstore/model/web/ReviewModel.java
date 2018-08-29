@@ -42,4 +42,14 @@ public class ReviewModel {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return "ReviewModel{" +
+                "id=" + id +
+                ", itemId=" + itemId +
+                ", numberOfStars=" + numberOfStars +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }

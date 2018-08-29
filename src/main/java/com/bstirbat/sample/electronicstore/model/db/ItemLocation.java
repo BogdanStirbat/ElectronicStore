@@ -54,4 +54,13 @@ public class ItemLocation {
     public void setItem(Item item) {
         this.item = item;
     }
+
+    @Override
+    public String toString() {
+        return "ItemLocation{" +
+                "id=" + id +
+                ", store=" + store +
+                ", item=" + item +
+                '}';
+    }
 }
