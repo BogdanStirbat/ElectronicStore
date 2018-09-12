@@ -34,6 +34,12 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    @Transactional
+    public void remove(Review review) {
+        entityManager.remove(review);
+    }
+
+    @Override
     public List<Review> findByItem(long itemId) {
         return entityManager.createQuery("select r from Review r where r.item.id=:itemId", Review.class)
                 .setParameter("itemId", itemId)

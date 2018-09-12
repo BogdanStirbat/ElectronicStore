@@ -9,4 +9,6 @@ public interface ItemService {
     Item save(Item item);
 
     Item update(Item item);
+
+    void remove(Item item);
 }

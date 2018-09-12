@@ -14,4 +14,6 @@ public interface StoreService {
     Store save(Store store);
 
     Store update(Store store);
+
+    void remove(Store store);
 }

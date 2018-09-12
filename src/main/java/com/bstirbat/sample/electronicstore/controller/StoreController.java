@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,6 +53,16 @@ public class StoreController {
 
         store = storeService.update(store);
         return ResponseEntity.ok(store);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity remove(@PathVariable Long id) {
+        logger.info("Received findById call, id: {}", id);
+
+        Store store = storeService.findById(id);
+        storeService.remove(store);
+
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "/list/{city}")

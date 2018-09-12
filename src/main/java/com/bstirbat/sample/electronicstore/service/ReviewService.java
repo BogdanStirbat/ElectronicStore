@@ -12,6 +12,8 @@ public interface ReviewService {
 
     Review update(Review review);
 
+    void remove(Review review);
+
     List<Review> findByItem(long itemId);
 
     void updateComments(int numberOfStars, String comment);

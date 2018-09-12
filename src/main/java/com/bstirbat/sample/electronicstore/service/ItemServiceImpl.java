@@ -31,4 +31,10 @@ public class ItemServiceImpl implements ItemService {
     public Item update(Item item) {
         return entityManager.merge(item);
     }
+
+    @Override
+    @Transactional
+    public void remove(Item item) {
+        entityManager.remove(item);
+    }
 }

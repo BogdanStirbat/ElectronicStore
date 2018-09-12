@@ -39,4 +39,10 @@ public class StoreServiceImpl implements StoreService {
     public Store update(Store store) {
         return entityManager.merge(store);
     }
+
+    @Override
+    @Transactional
+    public void remove(Store store) {
+        entityManager.remove(store);
+    }
 }

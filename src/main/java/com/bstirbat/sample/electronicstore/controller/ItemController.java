@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,5 +51,15 @@ public class ItemController {
 
         item = itemService.update(item);
         return ResponseEntity.ok(item);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity remove(@PathVariable Long id) {
+        logger.info("Received remove call, id: {}", id);
+
+        Item item = itemService.findById(id);
+        itemService.remove(item);
+
+        return ResponseEntity.ok().build();
     }
 }
